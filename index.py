@@ -6,7 +6,6 @@
 # @Last Modified time: 2016-01-20 17:45:58
 import logging, os, json, time
 import subprocess
-import bypy
 
 
 def get_errors(error_string):
@@ -23,7 +22,7 @@ def get_errors(error_string):
         return error_string.strip()
 
 def cap():
-    cap_command = ['/usr/bin/fswebcam', '--no-banner', '-r', '640x480', '-S', '20', './images/image-' + time.asctime(time.localtime(time.time())).replace(' ', '-') + '.jpg']
+    cap_command = ['/usr/bin/fswebcam', '--no-banner', '-r', '640x480', '-S', '20', './images/image-' + time.asctime(time.localtime(time.time())).replace(' ', '-').replace(':', '-') + '.jpg']
     print cap_command
     try:
         publish_proc = subprocess.Popen(cap_command,
